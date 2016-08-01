@@ -45,3 +45,7 @@ function _byeln($s = '', $exitCode = 0) {
 function _ebyeln($s = '', $exitCode = 0) {
 	_ebye($s . PHP_EOL, $exitCode);
 }
+
+function _raise($message = '', $code = 0) {
+	throw new Exception($message, $code);
+}
