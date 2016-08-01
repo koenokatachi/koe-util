@@ -13,8 +13,9 @@ class Profiler {
 
 	public function tick($key) {
 		if ($this->running) {
-			if ($this->running == $key)
+			if ($this->running == $key) {
 				return;
+			}
 
 			$this->tock();
 		}
@@ -33,12 +34,14 @@ class Profiler {
 	public function report($title = '') {
 		$this->tock();
 
-		if ($title)
+		if ($title) {
 			_eprintln(sprintf('-- %s', $title));
+		}
 
 		$total = array_sum($this->data);
-		foreach ($this->data as $key => $time)
+		foreach ($this->data as $key => $time) {
 			_eprintln(sprintf('%s: %.2f%%', $key, 100 * $time / $total));
+		}
 
 		_eprintln(sprintf('-- total: %.3fs', $total));
 	}

@@ -14,10 +14,11 @@ function _print($s = '') {
 
 // Common for all eprints
 function _eprint($s = '') {
-	if (defined('STDERR'))
+	if (defined('STDERR')) {
 		fputs(STDERR, $s);
-	else
+	} else {
 		_print($s);
+	}
 }
 
 function _println($s = '') {
