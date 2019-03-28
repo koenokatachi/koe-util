@@ -29,6 +29,20 @@ function _eprintln($s = '') {
 	_eprint($s . PHP_EOL);
 }
 
+function _json_println($data) {
+	static $opt = null;
+
+	if ($opt === null) {
+		if (version_compare(PHP_VERSION, '5.4.0') >= 0) {
+			$opt = JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE;
+		} else {
+			$opt = 0;
+		}
+	}
+
+	_println(json_encode($data, $opt));
+}
+
 function _bye($s = '', $exitCode = 0) {
 	_print($s);
 	exit($exitCode);
